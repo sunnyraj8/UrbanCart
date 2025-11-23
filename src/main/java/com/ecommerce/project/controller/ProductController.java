@@ -30,4 +30,26 @@ public class ProductController {
         return new ResponseEntity<>(productDTO, HttpStatus.CREATED);
     }
 
+    @GetMapping("/public/categories/{categoryId}/products")
+    public ResponseEntity<ProductResponse> getProductByCategory(@PathVariable Long categoryId){
+        ProductResponse productResponse= productService.searchByCategory(categoryId);
+        return new ResponseEntity<>(productResponse,HttpStatus.OK);
+    }
+
+    @GetMapping("/public/products/keyword/{keyword}")
+    public ResponseEntity<ProductResponse> getProductByKeyword(@PathVariable String keyword){
+        ProductResponse productResponse= productService.searchByKeyword(keyword);
+        return new ResponseEntity<>(productResponse,HttpStatus.OK);
+    }
+
+    @PutMapping("/admin/products/{productId}")
+    public ResponseEntity<ProductDTO> updateProduct(@PathVariable Long productId,@RequestBody Product product){
+        ProductDTO updatedproductDTO = productService.updateProduct(productId,product);
+        return new ResponseEntity<>(updatedproductDTO,HttpStatus.OK);
+    }
+    @DeleteMapping("admin/products/{productId}")
+    public ResponseEntity<ProductDTO> deleteProduct(@PathVariable Long productId){
+        ProductDTO deletedProduct = productService.deleteProduct(productId);
+        return new ResponseEntity<>(deletedProduct,HttpStatus.OK);
+    }
 }
