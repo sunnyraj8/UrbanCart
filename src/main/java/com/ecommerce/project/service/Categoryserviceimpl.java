@@ -47,7 +47,7 @@ public class Categoryserviceimpl implements CategoryService{
         categoryresponse.setPageNumber(categoryPage.getNumber());
         categoryresponse.setPageSize(categoryPage.getSize());
         categoryresponse.setTotalElements(categoryPage.getTotalElements());
-        categoryresponse.setTotalpages(categoryPage.getTotalPages());
+        categoryresponse.setTotalPages(categoryPage.getTotalPages());
         categoryresponse.setLastPage(categoryPage.isLast());
         return categoryresponse;
     }

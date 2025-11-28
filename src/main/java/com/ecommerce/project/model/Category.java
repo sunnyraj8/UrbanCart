@@ -1,14 +1,13 @@
 package com.ecommerce.project.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 @Entity(name = "Categories")
@@ -23,28 +22,7 @@ public class Category {
     @NotBlank
     @Size(min = 4,message = "Category name should be greater than or equal to 4")
     private String categoryName;
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
+    private List<Product> products;
 
-//    public Long getCategoryid() {
-//        return categoryid;
-//    }
-//
-//    public void setCategoryid(Long categoryid) {
-//        this.categoryid = categoryid;
-//    }
-//
-//    public String getCategoryName() {
-//        return categoryName;
-//    }
-//
-//    public void setCategoryName(String categoryName) {
-//        this.categoryName = categoryName;
-//    }
-
-//    public Category(Long categoryid, String categoryName) {
-//        this.categoryid = categoryid;
-//        this.categoryName = categoryName;
-//    }
-
-//    public Category() {
-//    }
 }
